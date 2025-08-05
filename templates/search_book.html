@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head><title>Search Results</title></head>
+<body>
+<h1>Search Result</h1>
+<p th:if="${book != null}">
+    Title: <span th:text="${book.title}"></span><br/>
+    Author: <span th:text="${book.author}"></span><br/>
+</p>
+<p th:if="${book == null}">Book not found</p>
+</body>
+</html>
