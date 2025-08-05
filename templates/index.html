@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>Library</title></head>
+<body>
+<h1>Library Books</h1>
+<a href="/add_book">Add Book</a><br><br>
+<form action="/search" method="get">
+    <input type="text" name="title" placeholder="Search Book Title"/>
+    <button type="submit">Search</button>
+</form>
+<ul>
+    <th:block th:each="book : ${books}">
+        <li th:text="${book.title} + ' by ' + ${book.author}"></li>
+    </th:block>
+</ul>
+</body>
+</html>
