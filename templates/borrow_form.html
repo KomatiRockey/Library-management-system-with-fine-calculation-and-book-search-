@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Borrow</title></head>
+<body>
+  <h1>Borrow Book</h1>
+  <form action="/borrow" method="post">
+    Username: <input name="username" required/><br/>
+    Book:
+    <select name="bookId">
+      <option th:each="book : ${books}" th:value="${book.id}" th:text="${book.title + ' (' + (book.available? 'Available' : 'Not available') + ')'}"></option>
+    </select><br/>
+    <button type="submit">Borrow</button>
+  </form>
+  <p th:if="${error}" th:text="${error}"></p>
+  <p><a href="/">Back</a></p>
+</body>
+</html>
