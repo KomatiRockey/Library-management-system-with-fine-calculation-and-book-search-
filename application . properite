@@ -1,5 +1,17 @@
-spring.datasource.url=jdbc:mysql://${CLEARDB_DATABASE_URL}
-spring.datasource.username=${CLEARDB_USERNAME}
-spring.datasource.password=${CLEARDB_PASSWORD}
+# server port from environment (Render / Heroku provide PORT); default 8080
+server.port=${PORT:8080}
+
+# Default datasource: in-memory H2 for convenience.
+# If you want MySQL in production, set JDBC_DATABASE_URL, DB_USERNAME, DB_PASSWORD in environment.
+spring.datasource.url=${JDBC_DATABASE_URL:jdbc:h2:mem:librarydb}
+spring.datasource.username=${DB_USERNAME:sa}
+spring.datasource.password=${DB_PASSWORD:}
+spring.datasource.driverClassName=${DB_DRIVER:org.h2.Driver}
+
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+spring.jpa.show-sql=false
+spring.thymeleaf.cache=false
+
+# H2 console (development)
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
