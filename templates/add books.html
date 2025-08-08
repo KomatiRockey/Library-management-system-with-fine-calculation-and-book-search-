@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head><title>Add Book</title></head>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Add Book</title></head>
 <body>
-<h1>Add New Book</h1>
-<form action="/add_book" method="post">
-    Title: <input type="text" name="title"/><br/>
-    Author: <input type="text" name="author"/><br/>
+  <h1>Add New Book</h1>
+  <form action="/add-book" method="post">
+    Title: <input name="title"/><br/>
+    Author: <input name="author"/><br/>
     Year: <input type="number" name="year"/><br/>
-    Genre: <input type="text" name="genre"/><br/>
-    <button type="submit">Add Book</button>
-</form>
+    Genre: <input name="genre"/><br/>
+    <button type="submit">Add</button>
+  </form>
+  <p><a href="/">Back</a></p>
 </body>
 </html>
