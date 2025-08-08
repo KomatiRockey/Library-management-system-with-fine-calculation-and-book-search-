@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html>
-<head><title>Search Results</title></head>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Search</title></head>
 <body>
-<h1>Search Result</h1>
-<p th:if="${book != null}">
-    Title: <span th:text="${book.title}"></span><br/>
-    Author: <span th:text="${book.author}"></span><br/>
-</p>
-<p th:if="${book == null}">Book not found</p>
+  <h1>Search Book</h1>
+  <form action="/search" method="get">
+    Title: <input name="title"/>
+    <button type="submit">Search</button>
+  </form>
+
+  <div th:if="${book != null}">
+    <h2>Result</h2>
+    <p>Title: <span th:text="${book.title}"></span></p>
+    <p>Author: <span th:text="${book.author}"></span></p>
+    <p>Year: <span th:text="${book.year}"></span></p>
+    <p>Available: <span th:text="${book.available}"></span></p>
+  </div>
+
+  <div th:if="${book == null}">
+    <p>No search result (or empty search).</p>
+  </div>
+
+  <p><a href="/">Back</a></p>
 </body>
 </html>
