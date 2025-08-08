@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"/><title>Return</title></head>
+<body>
+  <h1>Return Book</h1>
+  <p>Enter Transaction ID (you get this from the borrow step in a real app):</p>
+  <form action="/return" method="post">
+    Transaction ID: <input name="txnId" required/><br/>
+    <button type="submit">Return</button>
+  </form>
+
+  <div th:if="${transaction != null}">
+    <h2>Return processed</h2>
+    <p>Book: <span th:text="${transaction.book.title}"></span></p>
+    <p>Borrowed: <span th:text="${transaction.borrowDate}"></span></p>
+    <p>Returned: <span th:text="${transaction.returnDate}"></span></p>
+    <p>Fine: <span th:text="${transaction.fine}"></span></p>
+  </div>
+
+  <p th:if="${error}" th:text="${error}"></p>
+  <p><a href="/">Back</a></p>
+</body>
+</html>
