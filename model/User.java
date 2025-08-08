@@ -1,16 +1,18 @@
-package com.library.model;
+package com.example.library.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "app_user")
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
 
-    private String username;
-    private String password;
+    public User() {}
+    public User(String name) { this.name = name; }
 
-    // Getters and Setters
+    public Long getId() { return id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 }
-
