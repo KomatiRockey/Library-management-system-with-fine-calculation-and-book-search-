@@ -2,14 +2,12 @@ services:
   - type: web
     name: library-management-system
     env: java
-    buildCommand: "./mvnw clean install"
-    startCommand: "java -jar target/*.jar"
+    plan: free
+    buildCommand: |
+      apt-get update && apt-get install -y maven
+      mvn clean package
+    startCommand: java -jar target/*.jar
     envVars:
-      - key: SPRING_DATASOURCE_URL
-        value: jdbc:mysql://<YOUR_DB_HOST>:3306/<YOUR_DB_NAME>
-      - key: SPRING_DATASOURCE_USERNAME
-        value: <YOUR_DB_USER>
-      - key: SPRING_DATASOURCE_PASSWORD
-        value: <YOUR_DB_PASS>
-      - key: SPRING_JPA_HIBERNATE_DDL_AUTO
-        value: update
+      - key: JAVA_VERSION
+        value: 17
+
